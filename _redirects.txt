@@ -1,0 +1,6 @@
+/about          /about.html          200
+/academics      /academics.html      200
+/admissions     /admissions.html     200
+/notices        /notices.html        200
+/gallery        /gallery.html        200
+/contact        /contact.html        200
