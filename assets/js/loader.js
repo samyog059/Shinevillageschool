@@ -163,9 +163,14 @@
   }
 
   // Hide when everything is fully loaded
-  window.addEventListener('load', function () {
-    setTimeout(hideLoader, 350);
-  });
+  const loaderStart = Date.now();
+const minDisplay = 800; // minimum ms to show loader
+
+window.addEventListener('load', function () {
+  const elapsed = Date.now() - loaderStart;
+  const remaining = Math.max(0, minDisplay - elapsed);
+  setTimeout(hideLoader, remaining);
+});
 
   // Safety fallback — force hide after 4s no matter what
   setTimeout(hideLoader, 4000);
