@@ -31,10 +31,11 @@ document.addEventListener('DOMContentLoaded', function () {
   /* ── (Mobile nav auto-close is handled in include.js after header injects) ── */
 
   /* ── Set Active Nav Link ── */
-  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('.main-navbar .nav-link').forEach(link => {
-    const href = link.getAttribute('href');
-    if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+  const normalizedPath = window.location.pathname.replace(/\/+$/, '');
+  const currentPage = (normalizedPath.split('/').pop() || 'index').replace('.html', '') || 'index';
+  document.querySelectorAll('.main-navbar .nav-link[data-page]').forEach(link => {
+    const page = link.getAttribute('data-page');
+    if (page === currentPage) {
       link.classList.add('active');
     }
   });

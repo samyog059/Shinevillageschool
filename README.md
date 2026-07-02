@@ -60,14 +60,22 @@ on every page.
 ```
 school-website/
 ├── index.html
-├── about.html
-├── academics.html
-├── admissions.html
-├── faculty.html
-├── notices.html
-├── events.html
-├── gallery.html
-├── contact.html
+├── about/
+│   └── index.html
+├── academics/
+│   └── index.html
+├── admissions/
+│   └── index.html
+├── faculty/
+│   └── index.html
+├── notices/
+│   └── index.html
+├── events/
+│   └── index.html
+├── gallery/
+│   └── index.html
+├── contact/
+│   └── index.html
 ├── partials/
 │   ├── header.html     ← shared top bar + navbar
 │   └── footer.html     ← shared footer

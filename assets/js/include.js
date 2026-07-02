@@ -39,8 +39,8 @@
   }
 
   function setActiveNavLink() {
-    const currentPage = (window.location.pathname.split('/').pop() || 'index.html')
-      .replace('.html', '') || 'index';
+    const path = window.location.pathname.replace(/\/+$/, '');
+    const currentPage = (path.split('/').pop() || 'index').replace('.html', '') || 'index';
     document.querySelectorAll('.main-navbar .nav-link[data-page]').forEach(link => {
       if (link.getAttribute('data-page') === currentPage) {
         link.classList.add('active');
@@ -87,11 +87,13 @@
               el.href = 'mailto:' + SCHOOL_INFO[key];
             } else if (key.toLowerCase().includes('phone')) {
               el.href = 'tel:' + SCHOOL_INFO[key].replace(/[^0-9+]/g, '');
-            } else if (['facebook','youtube','instagram','twitter','linkedin'].includes(key)) {
+            } else if (['facebook','youtube','instagram','twitter','linkedin','tiktok'].includes(key.toLowerCase())) {
               el.href = SCHOOL_INFO[key];
             }
           }
-          el.textContent = SCHOOL_INFO[key];
+          if (el.children.length === 0) {
+            el.textContent = SCHOOL_INFO[key];
+          }
         }
       });
     }
@@ -107,18 +109,20 @@
               el.href = 'mailto:' + SCHOOL_INFO[key];
             } else if (key.toLowerCase().includes('phone')) {
               el.href = 'tel:' + SCHOOL_INFO[key].replace(/[^0-9+]/g, '');
-            } else if (['facebook','youtube','instagram','twitter','linkedin'].includes(key)) {
+            } else if (['facebook','youtube','instagram','twitter','linkedin','tiktok'].includes(key.toLowerCase())) {
               el.href = SCHOOL_INFO[key];
             }
           }
-          el.textContent = SCHOOL_INFO[key];
+          if (el.children.length === 0) {
+            el.textContent = SCHOOL_INFO[key];
+          }
         }
       });
     }
   }
 
   document.addEventListener('DOMContentLoaded', function () {
-    loadPartial('#site-header', 'partials/header.html', initNavbarBehavior);
-    loadPartial('#site-footer', 'partials/footer.html', initFooterBehavior);
+    loadPartial('#site-header', '/partials/header.html', initNavbarBehavior);
+    loadPartial('#site-footer', '/partials/footer.html', initFooterBehavior);
   });
 })();
